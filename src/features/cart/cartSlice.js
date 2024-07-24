@@ -38,4 +38,4 @@ export const {
   clearCart,
 } = cartSlice.actions;
 
-export default cartSlice;
+export default cartSlice.reducer;
