@@ -12,23 +12,36 @@ const cartSlice = createSlice({
       state.cart.push(action.payload);
     },
     deleteItem(state, action) {
+      console.log(action.payload);
       state.cart = state.cart.filter((item) => item.pizzaId !== action.payload);
     },
     increaseQuantity(state, action) {
       const item = state.cart.find((item) => item.pizzaId === action.payload);
       item.quantity++;
-      item.totalPrice = state.quantity * state.totalPrice;
+      item.totalPrice = item.quantity * item.unitPrice;
     },
     decreaseQuantity(state, action) {
       const item = state.cart.find((item) => item.pizzaId === action.payload);
       item.quantity--;
-      item.totalPrice = state.quantity * state.totalPrice;
+      console.log(item.quantity);
+      console.log(item.totalPrice);
+      item.totalPrice = item.quantity * item.unitPrice;
+
+      if (item.quantity === 0) cartSlice.caseReducers.deleteItem(state, action);
     },
     clearCart(state) {
       state.cart = [];
     },
   },
 });
+
+export const getCart = (state) => state.cart.cart;
+export const getCurrentQuantity = (id) => (state) =>
+  state.cart.cart.find((item) => item.pizzaId == id)?.quantity ?? 0;
+export const getTotalQuantitiy = (state) =>
+  state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
+// export const getTotalPirce = (state) =>
+//   state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
 export const {
   addItem,

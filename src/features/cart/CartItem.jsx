@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import Button from "../../ui/Button";
-import { formatCurrency } from "../../utils/helpers";
 
-function CartItem({ item, deleteBtn }) {
+import { formatCurrency } from "../../utils/helpers";
+import DeleteBtn from "./DeleteBtn";
+import UpdateItemQuantity from "./UpdateItemQuantity";
+
+function CartItem({ item }) {
   const { pizzaId, name, quantity, totalPrice } = item;
 
   return (
@@ -13,7 +15,8 @@ function CartItem({ item, deleteBtn }) {
       </p>
       <div className="flex items-center gap-4">
         <p>{formatCurrency(totalPrice)}</p>
-        {deleteBtn && <Button type="small">Delete</Button>}
+        <UpdateItemQuantity pizzaId={pizzaId} />
+        <DeleteBtn pizzaId={pizzaId} />
       </div>
     </li>
   );

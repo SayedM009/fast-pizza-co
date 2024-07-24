@@ -8,6 +8,8 @@ function CartOverview() {
   const totalPrices = useSelector((state) =>
     state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0),
   );
+
+  if (!totalQuantity) return null;
   return (
     <div className="flex items-center justify-between bg-stone-800 px-5 py-5 uppercase text-white">
       <p className="text-lg font-semibold">

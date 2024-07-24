@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function EmptyCart() {
   return (
-    <div>
-      <Link to="/menu">&larr; Back to menu</Link>
+    <div className="p-5">
+      <Link to="/menu" className="text-blue-500 hover:underline">
+        &larr; Back to menu
+      </Link>
 
-      <p>Your cart is still empty. Start adding some pizzas :)</p>
+      <p className="mt-10 text-2xl font-extrabold uppercase">
+        Your cart is still empty. Start adding some pizzas :)
+      </p>
     </div>
   );
 }
