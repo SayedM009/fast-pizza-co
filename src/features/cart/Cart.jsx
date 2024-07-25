@@ -28,7 +28,7 @@ function Cart() {
 
       <ul className="mt-9">
         {cart.map((item, i) => (
-          <CartItem item={item} key={i} />
+          <CartItem item={item} key={i} display="true" />
         ))}
       </ul>
 

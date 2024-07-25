@@ -5,7 +5,7 @@ import { formatCurrency } from "../../utils/helpers";
 import DeleteBtn from "./DeleteBtn";
 import UpdateItemQuantity from "./UpdateItemQuantity";
 
-function CartItem({ item }) {
+function CartItem({ item, display }) {
   const { pizzaId, name, quantity, totalPrice } = item;
 
   return (
@@ -15,8 +15,12 @@ function CartItem({ item }) {
       </p>
       <div className="flex items-center gap-4">
         <p>{formatCurrency(totalPrice)}</p>
-        <UpdateItemQuantity pizzaId={pizzaId} />
-        <DeleteBtn pizzaId={pizzaId} />
+        {display && (
+          <>
+            <UpdateItemQuantity pizzaId={pizzaId} />
+            <DeleteBtn pizzaId={pizzaId} />
+          </>
+        )}
       </div>
     </li>
   );
